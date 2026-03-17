@@ -1,0 +1,421 @@
+
+:root {
+    --tlo: #f2f2f2;
+    --powierzchnia: #ffffff;
+    --powierzchnia-jasna: #f7f7f7;
+    --tekst: #2f2f2f;
+    --tekst-pomocniczy: #666;
+    --akcent: #ef533f;
+    --akcent-ciemny: #d94330;
+    --cien: 0 8px 20px rgba(0, 0, 0, 0.08);
+    --cien-hover: 0 14px 28px rgba(0, 0, 0, 0.14);
+    --promien: 18px;
+    --szerokosc-kontenera: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--tlo);
+    color: var(--tekst);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.kontener {
+    width: min(100% - 32px, var(--szerokosc-kontenera));
+    margin: 0 auto;
+}
+
+.naglowek-strony {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+}
+
+.wnetrze-naglowka {
+    min-height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.logo img {
+    max-height: 50px;
+    width: auto;
+    display: block;
+}
+
+.przelacznik-menu {
+    display: none;
+}
+
+.ikona-hamburgera {
+    display: none;
+    font-size: 2rem;
+    color: var(--akcent);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.ikona-hamburgera:hover {
+    transform: scale(1.08);
+    color: var(--akcent-ciemny);
+}
+
+.nawigacja-glowna ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.nawigacja-glowna a {
+    position: relative;
+    color: var(--akcent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    padding: 6px 0;
+}
+
+.nawigacja-glowna a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--akcent-ciemny);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nawigacja-glowna a:hover {
+    color: var(--akcent-ciemny);
+}
+
+.nawigacja-glowna a:hover::after {
+    transform: scaleX(1);
+}
+
+.sekcja-powitalna {
+    padding: 70px 0 26px;
+}
+
+.pole-powitalne {
+    background: #ececec;
+    border-radius: var(--promien);
+    padding: 26px;
+}
+
+.sekcja-powitalna h1 {
+    font-size: 2.35rem;
+    margin-bottom: 8px;
+}
+
+.sekcja-powitalna p {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.sekcja-kart {
+    padding-bottom: 70px;
+}
+
+.siatka-kart {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+.karta {
+    background: var(--powierzchnia);
+    border-radius: var(--promien);
+    overflow: hidden;
+    box-shadow: var(--cien);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.karta:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--cien-hover);
+}
+
+.naglowek-karty {
+    background: var(--powierzchnia-jasna);
+    padding: 22px 24px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.naglowek-karty h2 {
+    font-size: 1.9rem;
+}
+
+.tresc-karty {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex: 1;
+}
+
+.karta p {
+    font-size: 1rem;
+    color: #383838;
+}
+
+.przycisk {
+    align-self: flex-start;
+    background: var(--akcent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.przycisk:hover {
+    background: var(--akcent-ciemny);
+    transform: translateY(-2px);
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.element-galerii {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #f0f0f0;
+    min-height: 150px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+
+.element-galerii img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.element-galerii:hover img {
+    transform: scale(1.06);
+}
+
+
+.stopka-strony {
+    background: #2f2f33;
+    color: #fff;
+    text-align: center;
+    padding: 26px 16px;
+    font-size: 1rem;
+}
+
+.podtytul-widoku {
+    display: none;
+}
+
+/* Średnie ekrany */
+@media (max-width: 992px) {
+    body {
+        font-size: 15px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .nawigacja-glowna ul {
+        gap: 24px;
+    }
+
+    .nawigacja-glowna a {
+        font-size: 0.96rem;
+    }
+
+    .sekcja-powitalna h1 {
+        font-size: 2rem;
+    }
+
+    .sekcja-powitalna p {
+        font-size: 1rem;
+    }
+
+    .naglowek-karty h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* Tablety */
+@media (max-width: 768px) {
+    .wnetrze-naglowka {
+        min-height: 82px;
+        position: relative;
+    }
+
+    .ikona-hamburgera {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nawigacja-glowna {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: min(280px, calc(100vw - 32px));
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: var(--cien);
+        padding: 10px 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .nawigacja-glowna ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nawigacja-glowna a {
+        display: block;
+        padding: 14px 18px;
+    }
+
+    .przelacznik-menu:checked + .ikona-hamburgera + .nawigacja-glowna {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .siatka-kart {
+        grid-template-columns: 1fr;
+    }
+
+    .sekcja-powitalna {
+        padding-top: 58px;
+    }
+
+    .sekcja-powitalna h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Telefony */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+
+    .kontener {
+        width: min(100% - 20px, var(--szerokosc-kontenera));
+    }
+
+    .wnetrze-naglowka {
+        min-height: 76px;
+    }
+
+    .logo img {
+        max-height: 38px;
+    }
+
+    .pole-powitalne,
+    .naglowek-karty,
+    .tresc-karty {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .sekcja-powitalna h1 {
+        font-size: 1.55rem;
+    }
+
+    .sekcja-powitalna p {
+        font-size: 0.98rem;
+    }
+
+    .naglowek-karty h2 {
+        font-size: 1.45rem;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .element-galerii {
+        min-height: 180px;
+    }
+
+    .przycisk {
+        font-size: 0.95rem;
+        padding: 13px 24px;
+    }
+}
+
+@media (min-width: 993px) {
+    .widok-duzy {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .widok-sredni {
+        display: block;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .widok-tablet {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .widok-telefon {
+        display: block;
+    }
+}
